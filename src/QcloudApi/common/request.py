@@ -24,6 +24,7 @@ class Request:
         return url
 
     def send(self, requestHost, requestUri, params, method = 'GET', debug = 0):
+        params['RequestClient'] = Request.version
         sign = Sign(self.secretId, self.secretKey)
         params['Signature'] = sign.make(requestHost, requestUri, params, method)
         params = urllib.urlencode(params)
