@@ -44,10 +44,10 @@ class Base:
         request = Request(self.secretId, self.secretKey)
         return request.generateUrl(self.requestHost, self.requestUri, self._params, self.method)
 
-    def call(self, action, params):
+    def call(self, action, params, files = {}):
         self._checkParams(action, params)
         request = Request(self.secretId, self.secretKey)
-        return request.send(self.requestHost, self.requestUri, self._params, self.method, self.debug)
+        return request.send(self.requestHost, self.requestUri, self._params, files, self.method, self.debug)
 
 def main():
     action = 'DescribeInstances'

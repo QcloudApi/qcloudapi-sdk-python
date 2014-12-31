@@ -3,23 +3,23 @@
 
 from src.QcloudApi.qcloudapi import QcloudApi
 
-module = 'sec'
-action = 'CaptchaQuery'
+module = 'cdn'
+action = 'UploadCdnEntity'
 config = {
     'Region': 'gz',
     'secretId': '你的secretId',
     'secretKey': '你的secretKey',
-    'method': 'get'
+    'method': 'post'
 }
 params = {
-    'userIp': '127.0.0.1',
-    'businessId': 1,
-    'captchaType': 1,
-    'script': 0,
+    'entityFileName': '/test.txt',
+    'entityFile': '/tmp/test.txt'
 }
 try:
     service = QcloudApi(module, config)
     print service.generateUrl(action, params)
     print service.call(action, params)
+    service.setRequestMethod('get')
+    print service.call('DescribeCdnEntities', {})
 except Exception, e:
     print 'exception:', e

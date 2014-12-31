@@ -1,11 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import httplib
 import urllib
+import requests
 from sign import Sign
 
 class Request:
+    timeout = 10
     version = 'SDK_PYTHON_1.0'
     def __init__(self, secretId, secretKey):
         self.secretId = secretId
@@ -23,34 +24,30 @@ class Request:
 
         return url
 
-    def send(self, requestHost, requestUri, params, method = 'GET', debug = 0):
+    def send(self, requestHost, requestUri, params, files = {}, method = 'GET', debug = 0):
         params['RequestClient'] = Request.version
         sign = Sign(self.secretId, self.secretKey)
         params['Signature'] = sign.make(requestHost, requestUri, params, method)
-        params = urllib.urlencode(params)
 
-        if (debug):
-            print 'host:', requestHost, '\n'
+        url = 'https://%s%s' % (requestHost, requestUri)
 
-        conn = httplib.HTTPSConnection(requestHost, 443)
         if (method.upper() == 'GET'):
-            url = '%s?%s' % (requestUri, params)
+            req = requests.get(url, params=params, timeout=Request.timeout)
             if (debug):
-                print 'url:', url, '\n'
-            conn.request("GET", url)
+                print 'url:', req.url, '\n'
         else:
-            conn.request(method, requestUri, params)
+            req = requests.post(url, data=params, files=files, timeout=Request.timeout)
+            if (debug):
+                print 'url:', req.url, '\n'
 
-        rsp = conn.getresponse()
-        if rsp.status != 200:
-            raise ValueError, 'status:%d' % rsp.status
+        if req.status_code != requests.codes.ok:
+            req.raise_for_status()
 
-        data = rsp.read()
-        return data
+        return req.text
 
 def main():
     secretId = 123
-    secretKey = 'xxx'
+    secretKey = 'test'
     params = {}
     request = Request(secretId, secretKey)
     print request.generateUrl('cvm.api.qcloud.com', '/v2/index.php', params)

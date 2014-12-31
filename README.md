@@ -2,6 +2,10 @@
 
 qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快捷方便的使用腾讯云的API而开发的SDK工具包。
 
+#### 更新历史
+
+* [12/30] 添加CDN模块
+
 #### 资源
 
 * [公共参数](http://wiki.qcloud.com/wiki/%E5%85%AC%E5%85%B1%E5%8F%82%E6%95%B0)
@@ -34,6 +38,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
     sec      对应   csec.api.qcloud.com
     image    对应   image.api.qcloud.com
     monitor  对应   monitor.api.qcloud.com
+    cdn      对应   cdn.api.qcloud.com
     '''
     module = 'sec'
 
@@ -61,9 +66,28 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
     }
     try:
         service = QcloudApi(module, config)
+
+        # 请求前可以通过下面四个方法重新设置请求的secretId/secretKey/region/method参数
+        # 重新设置请求的secretId
+        secretId = '你的secretId'
+        service.setSecretId(secretId)
+        # 重新设置请求的secretKey
+        secretKey = '你的secretKey'
+        service.setSecretKey(secretKey)
+        # 重新设置请求的region
+        region = 'sh'
+        service.setReion(region)
+        # 重新设置请求的method
+        method = 'post'
+        service.setMethod(method)
+
         # 生成请求的URL，不发起请求
         print service.generateUrl(action, params)
         # 调用接口，发起请求
         print service.call(action, params)
     except Exception, e:
         print 'exception:', e
+
+#### 常见问题
+
+* 如果碰到ImportError: No module named requests.auth 请安装 requests.[request说明](https://github.com/kennethreitz/requests)

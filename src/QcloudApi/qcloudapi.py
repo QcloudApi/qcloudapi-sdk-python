@@ -28,10 +28,25 @@ class QcloudApi:
         elif (module == 'monitor'):
             from modules.monitor import Monitor
             service = Monitor(config)
+        elif (module == 'cdn'):
+            from modules.cdn import Cdn
+            service = Cdn(config)
         else:
             raise ValueError, 'module not exists'
 
         return service
+
+    def setSecretId(self, secretId):
+        self.config['secretId'] = secretId
+
+    def setSecretKey(self, secretKey):
+        self.config['secretKey'] = secretKey
+
+    def setRequestMethod(self, method):
+        self.config['method'] = method
+
+    def setRegion(self, region):
+        self.config['region'] = region
 
     def generateUrl(self, action, params):
         service = self._factory(self.module, self.config)
@@ -39,26 +54,31 @@ class QcloudApi:
 
     def call(self, action, params):
         service = self._factory(self.module, self.config)
+
+        methods = dir(service)
+        for method in methods:
+            if (method == action):
+                func = getattr(service, action)
+                return func(params)
+
         return service.call(action, params)
 
 def main():
-    module = 'sec'
-    action = 'CaptchaQuery'
+    module = 'cdn'
+    action = 'UploadCdnEntity'
     config = {
         'Region': 'gz',
         'secretId': '你的secretId',
         'secretKey': '你的secretKey',
-        'method': 'get'
+        'method': 'post'
     }
     params = {
-        'userIp': '127.0.0.1',
-        'businessId': 1,
-        'captchaType': 1,
-        'script': 0,
+        'entityFileName': '/test_____don.html',
+        'entityFile': 'c:/xampp/htdocs/index.html'
     }
     service = QcloudApi(module, config)
     print 'URL:\n' + service.generateUrl(action, params)
-    print 'result:\n' + service.call(action, params)
+    print service.call(action, params)
 
 if (__name__ == '__main__'):
     main()
