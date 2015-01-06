@@ -7,7 +7,7 @@ from sign import Sign
 
 class Request:
     timeout = 10
-    version = 'SDK_PYTHON_1.0'
+    version = 'SDK_PYTHON_1.1'
     def __init__(self, secretId, secretKey):
         self.secretId = secretId
         self.secretKey = secretKey
