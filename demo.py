@@ -19,7 +19,7 @@ try:
     service = QcloudApi(module, config)
     print service.generateUrl(action, params)
     print service.call(action, params)
-    service.setRequestMethod('get')
-    print service.call('DescribeCdnEntities', {})
+    #service.setRequestMethod('get')
+    #print service.call('DescribeCdnEntities', {})
 except Exception, e:
     print 'exception:', e

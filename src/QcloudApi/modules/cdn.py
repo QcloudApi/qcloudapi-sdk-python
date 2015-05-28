@@ -27,8 +27,8 @@ class Cdn(Base):
 def main():
     config = {
         'Region': 'gz',
-        'secretId': 'AKIDeVGZCXxRAg1stOgYq0vuvpBFV3QR9B5o',
-        'secretKey': '2wZcMuJNFN64Ue8GpW9WmUSFXcStFGLS',
+        'secretId': '你的secretId',
+        'secretKey': '你的secretKey',
         'method': 'post'
     }
     params = {

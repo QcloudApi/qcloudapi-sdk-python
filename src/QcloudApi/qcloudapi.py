@@ -34,6 +34,9 @@ class QcloudApi:
         elif (module == 'vod'):
             from modules.vod import Vod
             service = Vod(config)
+	elif (module == 'yunsou'):
+            from modules.yunsou import Yunsou
+            service = Yunsou(config)
         else:
             raise ValueError, 'module not exists'
 
