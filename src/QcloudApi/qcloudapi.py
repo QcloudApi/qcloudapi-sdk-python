@@ -34,10 +34,10 @@ class QcloudApi:
         elif (module == 'vod'):
             from modules.vod import Vod
             service = Vod(config)
-		elif (module == 'yunsou'):
+	elif (module == 'yunsou'):
             from modules.yunsou import Yunsou
             service = Yunsou(config)
-		elif (module == 'wenzhi'):
+	elif (module == 'wenzhi'):
             from modules.wenzhi import Wenzhi
             service = Wenzhi(config)
         else:
