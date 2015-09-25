@@ -10,6 +10,9 @@ class QcloudApi:
         if (module == 'cdb'):
             from modules.cdb import Cdb
             service = Cdb(config)
+        elif (module == 'account'):
+            from modules.account import Account
+            service = Account(config)
         elif (module == 'cvm'):
             from modules.cvm import Cvm
             service = Cvm(config)
@@ -34,14 +37,14 @@ class QcloudApi:
         elif (module == 'vod'):
             from modules.vod import Vod
             service = Vod(config)
-	elif (module == 'yunsou'):
+        elif (module == 'yunsou'):
             from modules.yunsou import Yunsou
             service = Yunsou(config)
-	elif (module == 'wenzhi'):
+        elif (module == 'wenzhi'):
             from modules.wenzhi import Wenzhi
             service = Wenzhi(config)
         else:
-            raise ValueError, 'module not exists'
+            raise ValueError , 'module not exists'
 
         return service
 
@@ -86,8 +89,8 @@ def main():
         'entityFile': 'c:/xampp/htdocs/index.html'
     }
     service = QcloudApi(module, config)
-    print 'URL:\n' + service.generateUrl(action, params)
-    print service.call(action, params)
+    print ('URL:\n' + service.generateUrl(action, params))
+    print (service.call(action, params))
 
 if (__name__ == '__main__'):
     main()
