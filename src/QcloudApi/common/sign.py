@@ -11,7 +11,12 @@ class Sign:
         self.secretKey = secretKey
 
     def make(self, requestHost, requestUri, params, method = 'GET'):
-        srcStr = method.upper() + requestHost + requestUri + '?' + "&".join(k.replace("_",".") + "=" + str(params[k]) for k in sorted(params.keys()))
+        list = {}
+        for param_key in params:
+            if method == 'post' and str(params[param_key])[0:1] == "@":
+                continue
+            list[param_key] = params[param_key]
+        srcStr = method.upper() + requestHost + requestUri + '?' + "&".join(k.replace("_",".") + "=" + str(list[k]) for k in sorted(list.keys()))
         hashed = hmac.new(self.secretKey, srcStr, hashlib.sha1)
         return binascii.b2a_base64(hashed.digest())[:-1]
 
