@@ -43,6 +43,9 @@ class QcloudApi:
         elif (module == 'wenzhi'):
             from modules.wenzhi import Wenzhi
             service = Wenzhi(config)
+        elif (module == 'market'):
+            from modules.market import Market
+            service = Market(config)
         else:
             raise ValueError , 'module not exists'
 
