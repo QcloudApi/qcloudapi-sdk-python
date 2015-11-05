@@ -37,6 +37,9 @@ class QcloudApi:
         elif (module == 'cdn'):
             from modules.cdn import Cdn
             service = Cdn(config)
+        elif (module == 'vpc'):
+            from modules.vpc import Vpc
+            service = Vpc(config)
         elif (module == 'vod'):
             from modules.vod import Vod
             service = Vod(config)
