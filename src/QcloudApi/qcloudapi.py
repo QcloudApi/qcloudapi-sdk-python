@@ -28,6 +28,9 @@ class QcloudApi:
         elif (module == 'trade'):
             from modules.trade import Trade
             service = Trade(config)
+        elif (module == 'bill'):
+            from modules.bill import Bill
+            service = Bill(config)
         elif (module == 'monitor'):
             from modules.monitor import Monitor
             service = Monitor(config)
