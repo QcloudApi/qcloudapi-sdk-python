@@ -32,11 +32,11 @@ class Request:
         url = 'https://%s%s' % (requestHost, requestUri)
 
         if (method.upper() == 'GET'):
-            req = requests.get(url, params=params, timeout=Request.timeout)
+            req = requests.get(url, params=params, timeout=Request.timeout, verify=False)
             if (debug):
                 print 'url:', req.url, '\n'
         else:
-            req = requests.post(url, data=params, files=files, timeout=Request.timeout)
+            req = requests.post(url, data=params, files=files, timeout=Request.timeout, verify=False)
             if (debug):
                 print 'url:', req.url, '\n'
 
