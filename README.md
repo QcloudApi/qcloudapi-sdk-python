@@ -76,10 +76,10 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
         service.setSecretKey(secretKey)
         # 重新设置请求的region
         region = 'sh'
-        service.setReion(region)
+        service.setRegion(region)
         # 重新设置请求的method
         method = 'post'
-        service.setMethod(method)
+        service.setRequestMethod(method)
 
         # 生成请求的URL，不发起请求
         print service.generateUrl(action, params)
