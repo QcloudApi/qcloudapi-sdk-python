@@ -52,6 +52,12 @@ class QcloudApi:
         elif (module == 'market'):
             from modules.market import Market
             service = Market(config)
+        elif (module == 'live'):
+            from modules.live import Live
+            service = Live(config)
+        elif (module == 'eip'):
+            from modules.eip import Eip
+            service = Eip(config)
         else:
             raise ValueError , 'module not exists'
 
