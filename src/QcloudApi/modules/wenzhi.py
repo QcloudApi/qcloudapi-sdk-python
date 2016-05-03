@@ -7,7 +7,7 @@ class Wenzhi(Base):
     requestHost = 'wenzhi.api.qcloud.com'
 
 def main():
-    action = 'DataSearch'
+    action = 'TextSentiment'
     config = {
         'Region': 'gz',
         'secretId': '你的secretId',
