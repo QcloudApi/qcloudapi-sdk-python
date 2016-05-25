@@ -64,6 +64,9 @@ class QcloudApi:
         elif (module == 'snapshot'):
             from modules.snapshot import Snapshot
             service = Snapshot(config)
+        elif (module == 'scaling'):
+            from modules.scaling import Scaling
+            service = Scaling(config)
         else:
             raise ValueError , 'module not exists'
 
