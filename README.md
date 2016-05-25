@@ -4,7 +4,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
 
 #### 更新历史
 
-* [12/30] 添加CDN模块
+* [5/24] 添加CBS和SNAPSHOT模块
 
 #### 资源
 
