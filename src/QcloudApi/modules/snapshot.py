@@ -10,8 +10,8 @@ def main():
     action = 'DescribeSnapshots'
     config = {
         'Region': 'gz',
-        'secretId': 'AKIDDuXhrYW5ilcFO1bakwWTF7ogwCl8ugEY',
-        'secretKey': 'tsfzPHxrAB8hffaGNmHZDjNSsBm3Ewdm',
+        'secretId': '你的secretId',
+        'secretKey': '你的secretKey',
         'method': 'get'
     }
     params = {}
