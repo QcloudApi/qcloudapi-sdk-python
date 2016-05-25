@@ -6,6 +6,9 @@ import time
 import random
 import sys
 import os
+import warnings
+warnings.filterwarnings("ignore")
+
 sys.path.append(os.path.split(os.path.realpath(__file__))[0] + os.sep + '..')
 from common.request import Request
 
