@@ -58,6 +58,12 @@ class QcloudApi:
         elif (module == 'eip'):
             from modules.eip import Eip
             service = Eip(config)
+        elif (module == 'cbs'):
+            from modules.cbs import Cbs
+            service = Cbs(config)
+        elif (module == 'snapshot'):
+            from modules.snapshot import Snapshot
+            service = Snapshot(config)
         else:
             raise ValueError , 'module not exists'
 
