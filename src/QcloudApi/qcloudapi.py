@@ -67,6 +67,9 @@ class QcloudApi:
         elif (module == 'scaling'):
             from modules.scaling import Scaling
             service = Scaling(config)
+        elif (module == 'cmem'):
+            from modules.cmem import Cmem
+            service = Cmem(config)
         else:
             raise ValueError , 'module not exists'
 
