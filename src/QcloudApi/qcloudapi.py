@@ -71,10 +71,10 @@ class QcloudApi:
             from modules.cmem import Cmem
             service = Cmem(config)
         elif (module == 'tdsql'):
-            from modules.tdsql import tdsql
+            from modules.tdsql import Tdsql
             service = Tdsql(config)
         elif (module == 'bm'):
-            from modules.bm import bm
+            from modules.bm import Bm
             service = Bm(config)
         else:
             raise ValueError , 'module not exists'
