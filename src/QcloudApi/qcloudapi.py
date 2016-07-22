@@ -73,6 +73,9 @@ class QcloudApi:
         elif (module == 'tdsql'):
             from modules.tdsql import tdsql
             service = Tdsql(config)
+        elif (module == 'bm'):
+            from modules.bm import bm
+            service = Bm(config)
         else:
             raise ValueError , 'module not exists'
 
