@@ -79,6 +79,9 @@ class QcloudApi:
         elif (module == 'redis'):
             from modules.redis import Redis
             service = Redis(config)
+        elif (module == 'dfw'):
+            from modules.dfw import Dfw
+            service = Dfw(config)
         else:
             raise ValueError , 'module not exists'
 
