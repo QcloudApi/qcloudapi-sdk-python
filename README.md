@@ -66,7 +66,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
         'captchaType': 1,
         'script': 0,
         'Region': 'gz', # 当Region不是上面配置的DefaultRegion值时，可以重新指定请求的Region
-        'SignatureMethod':'HmacSHA256', # 指定所要用的签名算法，可选HmacSHA256或HmacSHA1，默认为HmacSHA1
+        'SignatureMethod':'HmacSHA256',
         }
     try:
         service = QcloudApi(module, config)
