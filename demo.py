@@ -13,7 +13,8 @@ config = {
 }
 params = {
     'entityFileName': '/test.txt',
-    'entityFile': '/tmp/test.txt'
+    'entityFile': '/tmp/test.txt',
+    'SignatureMethod':'HmacSHA256',#指定所要用的签名算法，可选HmacSHA256或HmacSHA1，默认为HmacSHA1
 }
 try:
     service = QcloudApi(module, config)
