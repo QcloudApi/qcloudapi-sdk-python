@@ -15,9 +15,14 @@ class Sign:
         for param_key in params:
             if method == 'post' and str(params[param_key])[0:1] == "@":
                 continue
+            if param_key == 'SignatureMethod' and params[param_key] == 'HmacSHA256':
+                flag_sha256 = 1
             list[param_key] = params[param_key]
         srcStr = method.upper() + requestHost + requestUri + '?' + "&".join(k.replace("_",".") + "=" + str(list[k]) for k in sorted(list.keys()))
-        hashed = hmac.new(self.secretKey, srcStr, hashlib.sha1)
+        if flag_sha256 == 1:
+            hashed = hmac.new(self.secretKey, srcStr, hashlib.sha256)
+        else:
+            hashed = hmac.new(self.secretKey, srcStr, hashlib.sha1)    
         return binascii.b2a_base64(hashed.digest())[:-1]
 
 def main():
