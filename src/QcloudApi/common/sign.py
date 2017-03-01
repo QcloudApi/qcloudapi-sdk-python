@@ -12,6 +12,7 @@ class Sign:
 
     def make(self, requestHost, requestUri, params, method = 'GET'):
         list = {}
+        flag_sha256 = 0
         for param_key in params:
             if method == 'post' and str(params[param_key])[0:1] == "@":
                 continue
