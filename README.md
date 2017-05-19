@@ -4,6 +4,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
 
 #### 更新历史
 
+* [5/19]设置接口默认Version： Cvm模块新版本API已经上线，通过是否传Version区分新旧版本。SDK默认调用新接口，因此需要增加Version的默认设置。 CvmAPI接口介绍见：https://www.qcloud.com/document/api/213/569
 * [3/1] 增加对HmacSHA1和HmacSHA256签名算法兼容的支持
 * [7/15] 增加Tdsql模块
 * [7/6] 添加Cmem模块
