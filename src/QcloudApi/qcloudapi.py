@@ -82,6 +82,9 @@ class QcloudApi:
         elif (module == 'dfw'):
             from modules.dfw import Dfw
             service = Dfw(config)
+        elif (module == 'ccs'):
+            from modules.ccs import Ccs
+            service = Ccs(config)
         else:
             raise ValueError , 'module not exists'
 
