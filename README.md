@@ -4,6 +4,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
 
 #### 更新历史
 
+* [2017/7/12] 回滚：不默认传Version参数
 * [2017/5/24] 增加Ccs模块
 * [2017/5/19]设置接口默认Version： Cvm模块新版本API已经上线，通过是否传Version区分新旧版本。SDK默认调用新接口，因此需要增加Version的默认设置。 CvmAPI接口介绍见：https://www.qcloud.com/document/api/213/569
 * [2017/3/1] 增加对HmacSHA1和HmacSHA256签名算法兼容的支持
@@ -70,7 +71,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
         # 'Region': 'gz',当Region不是上面配置的DefaultRegion值时，可以重新指定请求的Region
         # 'SignatureMethod':'HmacSHA256',指定所要用的签名算法，可选HmacSHA256或HmacSHA1，默认为HmacSHA1
         }
-        
+
     try:
         service = QcloudApi(module, config)
 

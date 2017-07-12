@@ -8,15 +8,12 @@ from sign import Sign
 class Request:
     timeout = 10
     version = 'SDK_PYTHON_1.1'
-    actionVersion = '2017-03-12'
     def __init__(self, secretId, secretKey):
         self.secretId = secretId
         self.secretKey = secretKey
 
     def generateUrl(self, requestHost, requestUri, params, method = 'GET'):
         params['RequestClient'] = Request.version
-        if not ('Version' in params.keys()):
-            params['Version'] = Request.actionVersion
         sign = Sign(self.secretId, self.secretKey)
         params['Signature'] = sign.make(requestHost, requestUri, params, method)
         params = urllib.urlencode(params)
@@ -29,8 +26,6 @@ class Request:
 
     def send(self, requestHost, requestUri, params, files = {}, method = 'GET', debug = 0):
         params['RequestClient'] = Request.version
-        if not ('Version' in params.keys()):
-            params['Version'] = Request.actionVersion
         sign = Sign(self.secretId, self.secretKey)
         params['Signature'] = sign.make(requestHost, requestUri, params, method)
 
