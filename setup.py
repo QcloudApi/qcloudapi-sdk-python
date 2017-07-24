@@ -10,7 +10,7 @@ ROOT = os.path.dirname(__file__)
 
 setup(
     name='qcloudapi-sdk-python',
-    version='2.0.0',
+    version='2.0.1',
     description='The Qcloud Api SDK for Python',
     long_description=open('README.rst').read(),
     author='Qcloud',

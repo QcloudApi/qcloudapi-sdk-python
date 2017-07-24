@@ -10,7 +10,7 @@ The SDK works on Python versions:
 
 Quick Start
 -----------
-First, install the library and set a default region:
+First, install the library:
 
 .. code-block:: sh
 
