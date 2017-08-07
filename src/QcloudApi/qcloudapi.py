@@ -76,6 +76,9 @@ class QcloudApi:
         elif (module == 'bm'):
             from modules.bm import Bm
             service = Bm(config)
+        elif (module == 'bmlb'):
+            from modules.bmlb import Bmlb
+            service = Bmlb(config)
         elif (module == 'redis'):
             from modules.redis import Redis
             service = Redis(config)
@@ -85,6 +88,9 @@ class QcloudApi:
         elif (module == 'ccs'):
             from modules.ccs import Ccs
             service = Ccs(config)
+        elif (module == 'feecenter'):
+            from modules.feecenter import Feecenter
+            service = Feecenter(config)
         else:
             raise ValueError , 'module not exists'
 
