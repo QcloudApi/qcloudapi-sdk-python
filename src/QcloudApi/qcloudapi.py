@@ -91,6 +91,9 @@ class QcloudApi:
         elif (module == 'feecenter'):
             from modules.feecenter import Feecenter
             service = Feecenter(config)
+        elif (module == 'cns'):
+            from modules.cns import Cns
+            service = Cns(config)
         else:
             raise ValueError , 'module not exists'
 
