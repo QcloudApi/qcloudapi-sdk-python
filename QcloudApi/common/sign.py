@@ -32,7 +32,11 @@ class Sign:
                 hashed = hmac.new(self.secretKey, srcStr, hashlib.sha1)
             else:
                 hashed = hmac.new(bytes(self.secretKey, 'latin-1'), bytes(srcStr, 'latin-1'), hashlib.sha1)
-        return binascii.b2a_base64(hashed.digest())[:-1]
+
+        if self.Py2:
+            return binascii.b2a_base64(hashed.digest())[:-1]
+        else:
+            return binascii.b2a_base64(hashed.digest())[:-1].decode()
 
 def main():
     secretId = 123
