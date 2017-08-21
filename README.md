@@ -4,7 +4,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
 
 #### 更新历史
 
-* [2017/7/24] 兼容python2和python3版本；支持pip安装使用
+* [2017/8/21] 兼容python2和python3版本；支持pip安装使用
 * [2017/7/12] 回滚：不默认传Version参数
 * [2017/5/24] 增加Ccs模块
 * [2017/5/19]设置接口默认Version： Cvm模块新版本API已经上线，通过是否传Version区分新旧版本。SDK默认调用新接口，因此需要增加Version的默认设置。 CvmAPI接口介绍见：https://www.qcloud.com/document/api/213/569
@@ -30,12 +30,18 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
 #### 安装
     $ pip install qcloudapi-sdk-python
 
+或者下载源码安装
+
+    $ git clone https://github.com/QcloudApi/qcloudapi-sdk-python
+    $ cd qcloudapi-sdk-python
+    $ python setup.py install
+
 #### 使用
     >>> from QcloudApi.qcloudapi import QcloudApi
     >>> module = 'cvm'
     >>> action = 'DescribeInstances'
-    >>> config = {'Region':'ap-guangzhou', 'secretId':'xxxx', 'secretKey':'xxx'}
-    >>> params = {'limit':1}
+    >>> config = {'Region':'ap-guangzhou', 'secretId':'xxxx', 'secretKey':'xxxx', 'Version':'2017-03-20'}
+    >>> params = {'Limit':1}
     >>> service = QcloudApi(module, config)
     >>> service.call(action, params)
 

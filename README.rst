@@ -31,7 +31,7 @@ Then, from a Python interpreter or script:
     >>> from QcloudApi.qcloudapi import QcloudApi
     >>> module = 'cvm'
     >>> action = 'DescribeInstances'
-    >>> config = {'Region':'ap-guangzhou', 'secretId':'xxxx', 'secretKey':'xxx'}
-    >>> params = {'limit':1}
+    >>> config = {'Region':'ap-guangzhou', 'secretId':'xxxx', 'secretKey':'xxxx', 'Version':'2017-03-20'}
+    >>> params = {'Limit':1}
     >>> service = QcloudApi(module, config)
     >>> service.call(action, params)
