@@ -8,94 +8,94 @@ class QcloudApi:
 
     def _factory(self, module, config):
         if (module == 'cdb'):
-            from modules.cdb import Cdb
+            from .modules.cdb import Cdb
             service = Cdb(config)
         elif (module == 'account'):
-            from modules.account import Account
+            from .modules.account import Account
             service = Account(config)
         elif (module == 'cvm'):
-            from modules.cvm import Cvm
+            from .modules.cvm import Cvm
             service = Cvm(config)
         elif (module == 'image'):
-            from modules.image import Image
+            from .modules.image import Image
             service = Image(config)
         elif (module == 'lb'):
-            from modules.lb import Lb
+            from .modules.lb import Lb
             service = Lb(config)
         elif (module == 'sec'):
-            from modules.sec import Sec
+            from .modules.sec import Sec
             service = Sec(config)
         elif (module == 'trade'):
-            from modules.trade import Trade
+            from .modules.trade import Trade
             service = Trade(config)
         elif (module == 'bill'):
-            from modules.bill import Bill
+            from .modules.bill import Bill
             service = Bill(config)
         elif (module == 'monitor'):
-            from modules.monitor import Monitor
+            from .modules.monitor import Monitor
             service = Monitor(config)
         elif (module == 'cdn'):
-            from modules.cdn import Cdn
+            from .modules.cdn import Cdn
             service = Cdn(config)
         elif (module == 'vpc'):
-            from modules.vpc import Vpc
+            from .modules.vpc import Vpc
             service = Vpc(config)
         elif (module == 'vod'):
-            from modules.vod import Vod
+            from .modules.vod import Vod
             service = Vod(config)
         elif (module == 'yunsou'):
-            from modules.yunsou import Yunsou
+            from .modules.yunsou import Yunsou
             service = Yunsou(config)
         elif (module == 'wenzhi'):
-            from modules.wenzhi import Wenzhi
+            from .modules.wenzhi import Wenzhi
             service = Wenzhi(config)
         elif (module == 'market'):
-            from modules.market import Market
+            from .modules.market import Market
             service = Market(config)
         elif (module == 'live'):
-            from modules.live import Live
+            from .modules.live import Live
             service = Live(config)
         elif (module == 'eip'):
-            from modules.eip import Eip
+            from .modules.eip import Eip
             service = Eip(config)
         elif (module == 'cbs'):
-            from modules.cbs import Cbs
+            from .modules.cbs import Cbs
             service = Cbs(config)
         elif (module == 'snapshot'):
-            from modules.snapshot import Snapshot
+            from .modules.snapshot import Snapshot
             service = Snapshot(config)
         elif (module == 'scaling'):
-            from modules.scaling import Scaling
+            from .modules.scaling import Scaling
             service = Scaling(config)
         elif (module == 'cmem'):
-            from modules.cmem import Cmem
+            from .modules.cmem import Cmem
             service = Cmem(config)
         elif (module == 'tdsql'):
-            from modules.tdsql import Tdsql
+            from .modules.tdsql import Tdsql
             service = Tdsql(config)
         elif (module == 'bm'):
-            from modules.bm import Bm
+            from .modules.bm import Bm
             service = Bm(config)
         elif (module == 'bmlb'):
-            from modules.bmlb import Bmlb
+            from .modules.bmlb import Bmlb
             service = Bmlb(config)
         elif (module == 'redis'):
-            from modules.redis import Redis
+            from .modules.redis import Redis
             service = Redis(config)
         elif (module == 'dfw'):
-            from modules.dfw import Dfw
+            from .modules.dfw import Dfw
             service = Dfw(config)
         elif (module == 'ccs'):
-            from modules.ccs import Ccs
+            from .modules.ccs import Ccs
             service = Ccs(config)
         elif (module == 'feecenter'):
-            from modules.feecenter import Feecenter
+            from .modules.feecenter import Feecenter
             service = Feecenter(config)
         elif (module == 'cns'):
-            from modules.cns import Cns
+            from .modules.cns import Cns
             service = Cns(config)
         else:
-            raise ValueError , 'module not exists'
+            raise ValueError('module not exists')
 
         return service
 
