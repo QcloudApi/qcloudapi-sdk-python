@@ -3,6 +3,8 @@
 qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快捷方便的使用腾讯云的API而开发的SDK工具包。
 
 #### 更新历史
+
+* [2017/8/21] 兼容python2和python3版本；支持pip安装使用
 * [2017/8/8] 增加Cns模块
 * [2017/8/7] 增加Feecenter模块
 * [2017/7/31] 增加Bmlb模块
@@ -16,28 +18,42 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
 
 #### 资源
 
-* [公共参数](http://wiki.qcloud.com/wiki/%E5%85%AC%E5%85%B1%E5%8F%82%E6%95%B0)
-* [API列表](http://wiki.qcloud.com/wiki/API)
-* [错误码](http://wiki.qcloud.com/wiki/%E9%94%99%E8%AF%AF%E7%A0%81)
+* [公共参数](https://www.qcloud.com/document/api/213/6976)
+* [API列表](https://www.qcloud.com/document/api)
+* [错误码](https://www.qcloud.com/document/api/213/10146)
 
 #### 入门
 
-1. 申请安全凭证。
+1. 申请[安全凭证](https://console.qcloud.com/capi)。
 在第一次使用云API之前，用户首先需要在腾讯云网站上申请安全凭证，安全凭证包括 SecretId 和 SecretKey, SecretId 是用于标识 API 调用者的身份，SecretKey是用于加密签名字符串和服务器端验证签名字符串的密钥。SecretKey 必须严格保管，避免泄露。
 
 2. 下载SDK，放入到您的程序目录。
 使用方法请参考下面的例子。
 
+#### 安装
+    $ pip install qcloudapi-sdk-python
+
+或者下载源码安装
+
+    $ git clone https://github.com/QcloudApi/qcloudapi-sdk-python
+    $ cd qcloudapi-sdk-python
+    $ python setup.py install
+
+#### 使用
+    >>> from QcloudApi.qcloudapi import QcloudApi
+    >>> module = 'cvm'
+    >>> action = 'DescribeInstances'
+    >>> config = {'Region':'ap-guangzhou', 'secretId':'xxxx', 'secretKey':'xxxx', 'Version':'2017-03-20'}
+    >>> params = {'Limit':1}
+    >>> service = QcloudApi(module, config)
+    >>> service.call(action, params)
+
 #### 例子
 
-    #!/usr/bin/python
-    # -*- coding: utf-8 -*-
-
-    # 引入云API入口模块
-    from src.QcloudApi.qcloudapi import QcloudApi
+    from QcloudApi.qcloudapi import QcloudApi
 
     '''
-    module 设置需要加载的模块
+    module: 设置需要加载的模块
     已有的模块列表：
     cvm      对应   cvm.api.qcloud.com
     cdb      对应   cdb.api.qcloud.com
@@ -48,36 +64,33 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
     monitor  对应   monitor.api.qcloud.com
     cdn      对应   cdn.api.qcloud.com
     '''
-    module = 'sec'
+    module = 'cvm'
 
     '''
-    action 对应接口的接口名，请参考wiki文档上对应接口的接口名
+    action: 对应接口的接口名，请参考wiki文档上对应接口的接口名
     '''
-    action = 'CaptchaQuery'
+    action = 'DescribeInstances'
 
+    '''
+    config: 云API的公共参数
+    '''
     config = {
-        'Region': '区域参数',
-        'secretId': '你的secretId',
-        'secretKey': '你的secretKey',
-        'method': 'get'
+        'Region': 'ap-guangzhou',
+        'secretId': '您的secretId',
+        'secretKey': '您的secretKey',
+        #'method': 'GET',
+        #'SignatureMethod': 'HmacSHA1'
     }
 
-    '''
-    params 请求参数，请参考wiki文档上对应接口的说明
-    '''
-    params = {
-        'userIp': '127.0.0.1',
-        'businessId': 1,
-        'captchaType': 1,
-        'script': 0,
-        # 'Region': 'gz',当Region不是上面配置的DefaultRegion值时，可以重新指定请求的Region
-        # 'SignatureMethod':'HmacSHA256',指定所要用的签名算法，可选HmacSHA256或HmacSHA1，默认为HmacSHA1
-        }
+    # 接口参数
+    action_params = {
+        'limit':1,
+    }
 
     try:
         service = QcloudApi(module, config)
 
-        # 请求前可以通过下面四个方法重新设置请求的secretId/secretKey/region/method参数
+        # 请求前可以通过下面四个方法重新设置请求的secretId/secretKey/region/method/SignatureMethod参数
         # 重新设置请求的secretId
         secretId = '你的secretId'
         service.setSecretId(secretId)
@@ -85,19 +98,19 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
         secretKey = '你的secretKey'
         service.setSecretKey(secretKey)
         # 重新设置请求的region
-        region = 'sh'
+        region = 'ap-shanghai'
         service.setRegion(region)
         # 重新设置请求的method
-        method = 'post'
+        method = 'POST'
         service.setRequestMethod(method)
+        # 重新设置请求的SignatureMethod
+        SignatureMethod = 'HmacSHA256'
+        service.setRequestMethod(SignatureMethod)
 
         # 生成请求的URL，不发起请求
-        print service.generateUrl(action, params)
+        print(service.generateUrl(action, action_params))
         # 调用接口，发起请求
-        print service.call(action, params)
-    except Exception, e:
-        print 'exception:', e
-
-#### 常见问题
-
-* 如果碰到ImportError: No module named requests.auth 请安装 requests.[request说明](https://github.com/kennethreitz/requests)
+        print(service.call(action, action_params))
+    except Exception as e:
+        import traceback
+        print('traceback.format_exc():\n%s' % traceback.format_exc())
