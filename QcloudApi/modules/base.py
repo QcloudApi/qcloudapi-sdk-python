@@ -11,7 +11,7 @@ warnings.filterwarnings("ignore")
 
 from ..common.request import ApiRequest, RequestInternal
 from ..common.sign import Sign
-from ..common.api_exception import ApiServerNetworkException
+from ..common.api_exception import ApiServerNetworkException, ApiClientParamException
 try:
     from urllib.parse import urlencode
 except ImportError:
@@ -27,9 +27,11 @@ class Base:
         self.secretId = config['secretId']
         self.secretKey = config['secretKey']
         self.defaultRegion = config.get('Region','')
+        self.Version = config.get('Version','')
         self.method = config.get('method','GET').upper()
         self.sign_method = config.get('SignatureMethod','HmacSHA1')
         self.apiRequest = ApiRequest(self.requestHost)
+        self.Token = config.get('Token','')
 
     def set_req_timeout(self, req_timeout):
         self.apiRequest.set_req_timeout(req_timeout)
@@ -46,13 +48,53 @@ class Base:
         if req_inter.method == 'POST':
             req_inter.header["Content-Type"] = "application/x-www-form-urlencoded"
 
+    def _fix_params(self, params):
+        if not isinstance(params, (dict,)):
+            return params
+        return self._format_params(None, params)
+
+    def _format_params(self, prefix, params):
+        d = {}
+        if params is None:
+            return d
+
+        if not isinstance(params, (tuple, list, dict)):
+            d[prefix] = params
+            return d
+
+        if isinstance(params, (list, tuple)):
+            for idx, item in enumerate(params):
+                if prefix:
+                    key = "{0}.{1}".format(prefix, idx)
+                else:
+                    key = "{0}".format(idx)
+                d.update(self._format_params(key, item))
+            return d
+
+        if isinstance(params, dict):
+            for k, v in params.items():
+                if prefix:
+                    key = '{0}.{1}'.format(prefix, k)
+                else:
+                    key = '{0}'.format(k)
+                d.update(self._format_params(key, v))
+            return d
+
+        raise ApiClientParamException('some params type error')
+
     def _build_req_inter(self, action, params, req_inter):
-        _params = copy.deepcopy(params)
+        _params = copy.deepcopy(self._fix_params(params))
         _params['Action'] = action[0].upper() + action[1:]
         _params['RequestClient'] = self.version
 
         if ('Region' not in _params and self.defaultRegion!=''):
             _params['Region'] = self.defaultRegion
+
+        if ('Version' not in _params and self.Version!=''):
+            _params['Version'] = self.Version
+
+        if ('Token' not in _params and self.Token!=''):
+            _params['Token'] = self.Token
 
         if ('SecretId' not in _params):
             _params['SecretId'] = self.secretId
