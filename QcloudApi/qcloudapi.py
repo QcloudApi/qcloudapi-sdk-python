@@ -94,6 +94,12 @@ class QcloudApi:
         elif (module == 'cns'):
             from .modules.cns import Cns
             service = Cns(config)
+        elif (module == 'bmeip'):
+            from .modules.bmeip import Bmeip
+            service = Bmeip(config)
+        elif (module == 'bmvpc'):
+            from .modules.bmvpc import Bmvpc
+            service = Bmvpc(config)
         else:
             raise ValueError('module not exists')
 
