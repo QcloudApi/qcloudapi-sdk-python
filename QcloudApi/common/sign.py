@@ -26,12 +26,12 @@ class Sign:
             if self.Py2:
                 hashed = hmac.new(self.secretKey, srcStr, hashlib.sha256)
             else:
-                hashed = hmac.new(bytes(self.secretKey, 'latin-1'), bytes(srcStr, 'latin-1'), hashlib.sha256)
+                hashed = hmac.new(bytes(self.secretKey, 'utf-8'), bytes(srcStr, 'utf-8'), hashlib.sha256)
         else:
             if self.Py2:
                 hashed = hmac.new(self.secretKey, srcStr, hashlib.sha1)
             else:
-                hashed = hmac.new(bytes(self.secretKey, 'latin-1'), bytes(srcStr, 'latin-1'), hashlib.sha1)
+                hashed = hmac.new(bytes(self.secretKey, 'utf-8'), bytes(srcStr, 'utf-8'), hashlib.sha1)
 
         if self.Py2:
             return binascii.b2a_base64(hashed.digest())[:-1]
