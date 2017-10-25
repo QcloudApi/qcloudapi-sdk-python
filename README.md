@@ -77,8 +77,8 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
         'Region': 'ap-guangzhou',
         'secretId': '您的secretId',
         'secretKey': '您的secretKey',
-        #'method': 'GET',
-        #'SignatureMethod': 'HmacSHA1'
+        'method': 'GET',
+        'SignatureMethod': 'HmacSHA1'
     }
 
     # 接口参数
@@ -89,7 +89,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
     try:
         service = QcloudApi(module, config)
 
-        # 请求前可以通过下面四个方法重新设置请求的secretId/secretKey/region/method/SignatureMethod参数
+        # 请求前可以通过下面几个方法重新设置请求的secretId/secretKey/region/method/SignatureMethod参数
         # 重新设置请求的secretId
         secretId = '你的secretId'
         service.setSecretId(secretId)
@@ -104,7 +104,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
         service.setRequestMethod(method)
         # 重新设置请求的SignatureMethod
         SignatureMethod = 'HmacSHA256'
-        service.setRequestMethod(SignatureMethod)
+        service.setSignatureMethod(SignatureMethod)
 
         # 生成请求的URL，不发起请求
         print(service.generateUrl(action, action_params))
