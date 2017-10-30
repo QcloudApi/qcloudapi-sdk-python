@@ -1,15 +1,28 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import os
 import socket
 try:
     from http.client import HTTPConnection, BadStatusLine, HTTPSConnection
+    from urllib.parse import urlparse
 except ImportError:
     from httplib import HTTPConnection, BadStatusLine, HTTPSConnection
+    from urlparse import urlparse
 from .api_exception import ApiClientNetworkException, ApiClientParamException
 
 class MyHTTPSConnection(HTTPSConnection):
     def __init__(self, host, port=None):
+        self.has_proxy = False
+        self.request_host = host
+        https_proxy = os.environ.get('https_proxy') or os.environ.get('HTTPS_PROXY')
+        if https_proxy:
+            url = urlparse(https_proxy)
+            if not url.hostname:
+                url = urlparse('https://' + https_proxy)
+            host = url.hostname
+            port = url.port
+            self.has_proxy = True
         HTTPSConnection.__init__(self, host, port)
         self.request_length = 0
 
@@ -19,6 +32,8 @@ class MyHTTPSConnection(HTTPSConnection):
 
     def request(self, method, url, body=None, headers={}):
         self.request_length = 0
+        if self.has_proxy:
+            self.set_tunnel(self.request_host, 443)
         HTTPSConnection.request(self, method, url, body, headers)
 
 class ApiRequest:

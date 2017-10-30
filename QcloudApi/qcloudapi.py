@@ -100,6 +100,9 @@ class QcloudApi:
         elif (module == 'bmvpc'):
             from .modules.bmvpc import Bmvpc
             service = Bmvpc(config)
+        elif module == 'bgpip':
+            from .modules.bgpip import Bgpip
+            service = Bgpip(config)
         else:
             raise ValueError('module not exists')
 
