@@ -1,5 +1,18 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
+#
+# Copyright 1999-2017 Tencent Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 import copy
 import time
@@ -7,17 +20,19 @@ import random
 import sys
 import os
 import warnings
-warnings.filterwarnings("ignore")
 
-from ..common.request import ApiRequest, RequestInternal
-from ..common.sign import Sign
-from ..common.api_exception import ApiServerNetworkException, ApiClientParamException
 try:
     from urllib.parse import urlencode
 except ImportError:
     from urllib import urlencode
 
-class Base:
+from QcloudApi.common.request import ApiRequest, RequestInternal
+from QcloudApi.common.sign import Sign
+from QcloudApi.common.api_exception import ApiServerNetworkException, ApiClientParamException
+
+warnings.filterwarnings("ignore")
+
+class Base(object):
     requestHost = ''
     requestUri = '/v2/index.php'
     _params = {}
@@ -135,18 +150,3 @@ class Base:
         resp_inter = self.apiRequest.send_request(req_inter)
         self._check_status(resp_inter)
         return resp_inter.data
-
-def main():
-    action = 'DescribeInstances'
-    config = {
-        'Region': 'gz',
-        'secretId': '你的secretId',
-        'secretKey': '你的secretKey',
-        'method': 'get',
-    }
-    params = {}
-    base = Base(config)
-    print((base.call(action, params)))
-
-if (__name__ == '__main__'):
-    main()
