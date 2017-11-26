@@ -8,4 +8,7 @@ sudo: false
 install:
   - pip install --upgrade tox
 
-script: tox --recreate
+script: tox -r
+
+after_success:
+    - tox -r -ecoveralls
