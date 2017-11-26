@@ -1,6 +1,12 @@
-# 忽略*.pyc文件
 *.pyc
 
-.venv/
-qcloudapi_sdk_python.egg-info/
+# twine
 dist/
+
+# tox
+.tox/
+qcloudapi_sdk_python.egg-info/
+
+# pytest, pytest-cov
+.cache/
+.coverage
