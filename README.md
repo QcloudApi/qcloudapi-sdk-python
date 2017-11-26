@@ -1,3 +1,5 @@
+[![pypi version](https://img.shields.io/pypi/v/qcloudapi-sdk-python.svg)](https://pypi.python.org/pypi/qcloudapi-sdk-python)
+
 ### qcloudapi-sdk-python
 
 qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快捷方便的使用腾讯云的API而开发的SDK工具包。
