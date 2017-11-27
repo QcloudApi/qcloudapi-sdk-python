@@ -1,5 +1,6 @@
 [![pypi version](https://img.shields.io/pypi/v/qcloudapi-sdk-python.svg)](https://pypi.python.org/pypi/qcloudapi-sdk-python)
 [![Build Status](https://travis-ci.org/QcloudApi/qcloudapi-sdk-python.svg?branch=master)](https://travis-ci.org/QcloudApi/qcloudapi-sdk-python)
+[![Coverage Status](https://coveralls.io/repos/github/QcloudApi/qcloudapi-sdk-python/badge.svg?branch=master)](https://coveralls.io/github/QcloudApi/qcloudapi-sdk-python)
 
 ### qcloudapi-sdk-python
 
