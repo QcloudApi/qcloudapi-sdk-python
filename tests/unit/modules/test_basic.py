@@ -15,7 +15,9 @@
 """Basic test for modules, simply check if import succeed."""
 
 
+from QcloudApi.modules import apigateway
 from QcloudApi.modules import account
+from QcloudApi.modules import batch
 from QcloudApi.modules import bgpip
 from QcloudApi.modules import bill
 from QcloudApi.modules import bm
@@ -26,6 +28,7 @@ from QcloudApi.modules import cbs
 from QcloudApi.modules import ccs
 from QcloudApi.modules import cdb
 from QcloudApi.modules import cdn
+from QcloudApi.modules import cloudaudit
 from QcloudApi.modules import cmem
 from QcloudApi.modules import cns
 from QcloudApi.modules import cvm
@@ -39,6 +42,7 @@ from QcloudApi.modules import market
 from QcloudApi.modules import monitor
 from QcloudApi.modules import redis
 from QcloudApi.modules import scaling
+from QcloudApi.modules import scf
 from QcloudApi.modules import sec
 from QcloudApi.modules import snapshot
 from QcloudApi.modules import tdsql

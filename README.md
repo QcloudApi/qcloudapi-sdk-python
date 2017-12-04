@@ -8,6 +8,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
 
 #### 更新历史
 
+* [2017/12/04] 增加apigateway、batch、cloudaudit和scf模块
 * [2017/10/30] 增加bgpip模块
 * [2017/9/11] 增加Bmeip和Bmvpc模块
 * [2017/8/28] 业务接口的数组参数或者Object参数，支持以Json方式传入，可参考demo.py

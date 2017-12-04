@@ -103,6 +103,18 @@ class QcloudApi:
         elif module == 'bgpip':
             from .modules.bgpip import Bgpip
             service = Bgpip(config)
+        elif module == 'scf':
+            from .modules.scf import Scf
+            service = Scf(config)
+        elif module == 'apigateway':
+            from .modules.apigateway import APIGateway
+            service = APIGateway(config)
+        elif module == 'batch':
+            from .modules.batch import Batch
+            service = Batch(config)
+        elif module == 'cloudaudit':
+            from .modules.cloudaudit import CloudAudit
+            service = CloudAudit(config)
         else:
             raise ValueError('module not exists')
 
