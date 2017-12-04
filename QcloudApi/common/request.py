@@ -37,7 +37,7 @@ class MyHTTPSConnection(HTTPSConnection):
         HTTPSConnection.request(self, method, url, body, headers)
 
 class ApiRequest:
-    def __init__(self, host, req_timeout = 10, debug = False):
+    def __init__(self, host, req_timeout=90, debug=False):
         self.conn = MyHTTPSConnection(host)
         self.req_timeout = req_timeout
         self.keep_alive = False
