@@ -26,11 +26,14 @@ try:
 except ImportError:
     from urllib import urlencode
 
-from QcloudApi.common.request import ApiRequest, RequestInternal
+from QcloudApi.common.api_exception import ApiClientParamException
+from QcloudApi.common.api_exception import ApiServerNetworkException
+from QcloudApi.common.request import ApiRequest
+from QcloudApi.common.request import RequestInternal
 from QcloudApi.common.sign import Sign
-from QcloudApi.common.api_exception import ApiServerNetworkException, ApiClientParamException
 
 warnings.filterwarnings("ignore")
+
 
 class Base(object):
     requestHost = ''
@@ -41,12 +44,12 @@ class Base(object):
     def __init__(self, config):
         self.secretId = config['secretId']
         self.secretKey = config['secretKey']
-        self.defaultRegion = config.get('Region','')
-        self.Version = config.get('Version','')
-        self.method = config.get('method','GET').upper()
-        self.sign_method = config.get('SignatureMethod','HmacSHA1')
+        self.defaultRegion = config.get('Region', '')
+        self.Version = config.get('Version', '')
+        self.method = config.get('method', 'GET').upper()
+        self.sign_method = config.get('SignatureMethod', 'HmacSHA1')
         self.apiRequest = ApiRequest(self.requestHost)
-        self.Token = config.get('Token','')
+        self.Token = config.get('Token', '')
 
     def set_req_timeout(self, req_timeout):
         self.apiRequest.set_req_timeout(req_timeout)
@@ -57,11 +60,11 @@ class Base(object):
     def close_debug(self):
         self.apiRequest.set_debug(False)
 
-    def _build_header(self, req_inter):
+    def _build_header(self, req):
         if self.apiRequest.is_keep_alive():
-            req_inter.header["Connection"] = "Keep-Alive"
-        if req_inter.method == 'POST':
-            req_inter.header["Content-Type"] = "application/x-www-form-urlencoded"
+            req.header["Connection"] = "Keep-Alive"
+        if req.method == 'POST':
+            req.header["Content-Type"] = "application/x-www-form-urlencoded"
 
     def _fix_params(self, params):
         if not isinstance(params, (dict,)):
@@ -102,13 +105,13 @@ class Base(object):
         _params['Action'] = action[0].upper() + action[1:]
         _params['RequestClient'] = self.version
 
-        if ('Region' not in _params and self.defaultRegion!=''):
+        if ('Region' not in _params and self.defaultRegion != ''):
             _params['Region'] = self.defaultRegion
 
-        if ('Version' not in _params and self.Version!=''):
+        if ('Version' not in _params and self.Version != ''):
             _params['Version'] = self.Version
 
-        if ('Token' not in _params and self.Token!=''):
+        if ('Token' not in _params and self.Token != ''):
             _params['Token'] = self.Token
 
         if ('SecretId' not in _params):
@@ -126,7 +129,9 @@ class Base(object):
             _params['SignatureMethod'] = self.sign_method
 
         sign = Sign(self.secretId, self.secretKey)
-        _params['Signature'] = sign.make(req_inter.host, req_inter.uri, _params, req_inter.method, self.sign_method)
+        _params['Signature'] = sign.make(
+            req_inter.host, req_inter.uri, _params,
+            req_inter.method, self.sign_method)
 
         req_inter.data = urlencode(_params)
 
@@ -134,18 +139,21 @@ class Base(object):
 
     def _check_status(self, resp_inter):
         if resp_inter.status != 200:
-            raise ApiServerNetworkException(resp_inter.status, resp_inter.header, resp_inter.data)
+            raise ApiServerNetworkException(
+                resp_inter.status, resp_inter.header, resp_inter.data)
 
     def generateUrl(self, action, params):
-        req_inter = RequestInternal(self.requestHost, self.method, self.requestUri)
+        req_inter = RequestInternal(
+            self.requestHost, self.method, self.requestUri)
         self._build_req_inter(action, params, req_inter)
         url = 'https://%s%s' % (req_inter.host, req_inter.uri)
         if (req_inter.method == 'GET'):
             url += '?' + req_inter.data
         return url
 
-    def call(self, action, params, files = {}):
-        req_inter = RequestInternal(self.requestHost, self.method, self.requestUri)
+    def call(self, action, params, files={}):
+        req_inter = RequestInternal(
+            self.requestHost, self.method, self.requestUri)
         self._build_req_inter(action, params, req_inter)
         resp_inter = self.apiRequest.send_request(req_inter)
         self._check_status(resp_inter)

@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Bmvpc(base.Base):
     requestHost = 'bmvpc.api.qcloud.com'

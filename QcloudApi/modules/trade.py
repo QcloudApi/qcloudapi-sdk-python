@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Trade(base.Base):
     requestHost = 'trade.api.qcloud.com'

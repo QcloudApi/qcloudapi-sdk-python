@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class CloudAudit(base.Base):
     requestHost = 'cloudaudit.api.qcloud.com'

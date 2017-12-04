@@ -1,7 +1,8 @@
-#!/usr/bin/python
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-class QcloudApi:
+
+class QcloudApi(object):
     def __init__(self, module, config):
         self.module = module
         self.config = config
@@ -154,7 +155,7 @@ class QcloudApi:
         @param debug: debug switch
         """
         service = self._factory(self.module, self.config)
-        if req_timeout!=None:
+        if req_timeout is not None:
             service.set_req_timeout(req_timeout)
         if debug:
             service.open_debug()
@@ -166,6 +167,7 @@ class QcloudApi:
                 return func(params)
 
         return service.call(action, params)
+
 
 def main():
     module = 'cdn'
@@ -183,6 +185,7 @@ def main():
     service = QcloudApi(module, config)
     print(('URL:\n' + service.generateUrl(action, params)))
     print((service.call(action, params)))
+
 
 if (__name__ == '__main__'):
     main()

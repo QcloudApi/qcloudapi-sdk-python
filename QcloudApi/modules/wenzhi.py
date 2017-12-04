@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Wenzhi(base.Base):
     requestHost = 'wenzhi.api.qcloud.com'

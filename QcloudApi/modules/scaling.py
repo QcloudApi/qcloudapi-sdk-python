@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Scaling(base.Base):
     requestHost = 'scaling.api.qcloud.com'

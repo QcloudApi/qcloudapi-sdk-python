@@ -35,7 +35,10 @@ config = {
 # 接口参数
 action_params = {
     'Version': '2017-03-12',
-    'Filters': [{'Name':'zone', 'Values':['ap-guangzhou-1', 'ap-guangzhou-2']}],
+    'Filters': [{
+        'Name': 'zone',
+        'Values': ['ap-guangzhou-1', 'ap-guangzhou-2']
+    }],
     'limit': 1,
 }
 

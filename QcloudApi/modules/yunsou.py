@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Yunsou(base.Base):
     requestHost = 'yunsou.api.qcloud.com'

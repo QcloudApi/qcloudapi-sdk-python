@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Vod(base.Base):
     requestHost = 'vod.api.qcloud.com'

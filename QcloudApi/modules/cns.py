@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Cns(base.Base):
     requestHost = 'cns.api.qcloud.com'

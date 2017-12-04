@@ -9,13 +9,16 @@ try:
 except ImportError:
     from httplib import HTTPConnection, BadStatusLine, HTTPSConnection
     from urlparse import urlparse
+
 from .api_exception import ApiClientNetworkException, ApiClientParamException
+
 
 class MyHTTPSConnection(HTTPSConnection):
     def __init__(self, host, port=None):
         self.has_proxy = False
         self.request_host = host
-        https_proxy = os.environ.get('https_proxy') or os.environ.get('HTTPS_PROXY')
+        https_proxy = (os.environ.get('https_proxy')
+                       or os.environ.get('HTTPS_PROXY'))
         if https_proxy:
             url = urlparse(https_proxy)
             if not url.hostname:
@@ -36,7 +39,8 @@ class MyHTTPSConnection(HTTPSConnection):
             self.set_tunnel(self.request_host, 443)
         HTTPSConnection.request(self, method, url, body, headers)
 
-class ApiRequest:
+
+class ApiRequest(object):
     def __init__(self, host, req_timeout=90, debug=False):
         self.conn = MyHTTPSConnection(host)
         self.req_timeout = req_timeout
@@ -57,32 +61,42 @@ class ApiRequest:
     def send_request(self, req_inter):
         try:
             if self.debug:
-                print(("SendRequest %s" % req_inter))
+                print("SendRequest %s" % req_inter)
             if req_inter.method == 'GET':
                 req_inter_url = '%s?%s' % (req_inter.uri, req_inter.data)
-                self.conn.request(req_inter.method, req_inter_url, None, req_inter.header)
+                self.conn.request(req_inter.method, req_inter_url,
+                                  None, req_inter.header)
             elif req_inter.method == 'POST':
-                self.conn.request(req_inter.method, req_inter.uri, req_inter.data, req_inter.header)
+                print(req_inter.data)
+                self.conn.request(req_inter.method, req_inter.uri,
+                                  req_inter.data, req_inter.header)
             else:
-                raise ApiClientParamException('Method only support (GET, POST)')
+                raise ApiClientParamException(
+                    'Method only support (GET, POST)')
 
             self.conn.sock.settimeout(self.req_timeout)
-            self.conn.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+            self.conn.sock.setsockopt(socket.IPPROTO_TCP,
+                                      socket.TCP_NODELAY, 1)
             try:
                 http_resp = self.conn.getresponse()
             except BadStatusLine:
-                #open another connection when keep-alive timeout
-                #httplib will not handle keep-alive timeout, so we must handle it ourself
+                # open another connection when keep-alive timeout
+                # httplib will not handle keep-alive timeout,
+                # so we must handle it ourself
                 if self.debug:
                     print("keep-alive timeout, reopen connection")
                 self.conn.close()
 
-                self.conn.request(req_inter.method, req_inter.uri, req_inter.data, req_inter.header)
+                self.conn.request(req_inter.method, req_inter.uri,
+                                  req_inter.data, req_inter.header)
                 self.conn.sock.settimeout(self.req_timeout)
-                self.conn.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+                self.conn.sock.setsockopt(socket.IPPROTO_TCP,
+                                          socket.TCP_NODELAY, 1)
                 http_resp = self.conn.getresponse()
             headers = dict(http_resp.getheaders())
-            resp_inter = ResponseInternal(status = http_resp.status, header = headers, data = http_resp.read())
+            resp_inter = ResponseInternal(status=http_resp.status,
+                                          header=headers,
+                                          data=http_resp.read())
             self.request_size = self.conn.request_length
             self.response_size = len(resp_inter.data)
             if not self.is_keep_alive():
@@ -94,9 +108,10 @@ class ApiRequest:
             self.conn.close()
             raise ApiClientNetworkException(str(e))
 
-class RequestInternal:
-    def __init__(self, host = "", method = "", uri = "", header = None, data = ""):
-        if header == None:
+
+class RequestInternal(object):
+    def __init__(self, host="", method="", uri="", header=None, data=""):
+        if header is None:
             header = {}
         self.host = host
         self.method = method
@@ -105,17 +120,20 @@ class RequestInternal:
         self.data = data
 
     def __str__(self):
-        return "Host: %s\nMethod: %s\nUri: %s\nHeader: %s\nData: %s\n" % \
-                (self.host, self.method, self.uri, "\n".join(["%s: %s" % (k,v) for k,v in list(self.header.items())]), self.data)
+        headers = "\n".join("%s: %s" % (k, v) for k, v in self.header.items())
+        return ("Host: %s\nMethod: %s\nUri: %s\nHeader: %s\nData: %s\n"
+                % (self.host, self.method, self.uri, headers, self.data))
 
-class ResponseInternal:
-    def __init__(self, status = 0, header = None, data = ""):
-        if header == None:
+
+class ResponseInternal(object):
+    def __init__(self, status=0, header=None, data=""):
+        if header is None:
             header = {}
         self.status = status
         self.header = header
         self.data = data
 
     def __str__(self):
-        return "Status: %s\nHeader: %s\nData: %s\n" % \
-            (self.status, "\n".join(["%s: %s" % (k,v) for k,v in list(self.header.items())]), self.data)
+        headers = "\n".join("%s: %s" % (k, v) for k, v in self.header.items())
+        return ("Status: %s\nHeader: %s\nData: %s\n"
+                % (self.status, headers, self.data))

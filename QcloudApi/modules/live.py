@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Live(base.Base):
     requestHost = 'live.api.qcloud.com'

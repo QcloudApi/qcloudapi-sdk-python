@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class APIGateway(base.Base):
     requestHost = 'apigateway.api.qcloud.com'

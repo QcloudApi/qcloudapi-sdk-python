@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Tdsql(base.Base):
     requestHost = 'tdsql.api.qcloud.com'

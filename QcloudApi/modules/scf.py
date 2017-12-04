@@ -14,6 +14,8 @@
 
 from QcloudApi.modules import base
 
+
 class Scf(base.Base):
     """Serverless Cloud Function."""
+
     requestHost = 'scf.api.qcloud.com'

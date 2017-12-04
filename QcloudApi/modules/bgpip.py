@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Bgpip(base.Base):
     requestHost = 'bgpip.api.qcloud.com'

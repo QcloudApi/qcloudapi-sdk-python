@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Sec(base.Base):
     requestHost = 'csec.api.qcloud.com'

@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Batch(base.Base):
     requestHost = 'batch.api.qcloud.com'

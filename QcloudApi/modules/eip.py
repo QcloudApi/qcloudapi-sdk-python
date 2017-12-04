@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Eip(base.Base):
     requestHost = 'eip.api.qcloud.com'

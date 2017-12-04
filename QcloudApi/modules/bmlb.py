@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Bmlb(base.Base):
     requestHost = 'bmlb.api.qcloud.com'

@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Redis(base.Base):
     requestHost = 'redis.api.qcloud.com'

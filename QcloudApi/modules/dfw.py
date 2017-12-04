@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Dfw(base.Base):
     requestHost = 'dfw.api.qcloud.com'

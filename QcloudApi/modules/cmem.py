@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Cmem(base.Base):
     requestHost = 'cmem.api.qcloud.com'

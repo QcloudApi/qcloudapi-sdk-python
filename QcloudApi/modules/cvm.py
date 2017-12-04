@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Cvm(base.Base):
     requestHost = 'cvm.api.qcloud.com'

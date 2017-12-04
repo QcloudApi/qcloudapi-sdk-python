@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Cbs(base.Base):
     requestHost = 'cbs.api.qcloud.com'

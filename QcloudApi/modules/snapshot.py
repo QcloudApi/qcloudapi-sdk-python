@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Snapshot(base.Base):
     requestHost = 'snapshot.api.qcloud.com'

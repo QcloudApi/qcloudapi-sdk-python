@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Monitor(base.Base):
     requestHost = 'monitor.api.qcloud.com'

@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Feecenter(base.Base):
     requestHost = 'feecenter.api.qcloud.com'

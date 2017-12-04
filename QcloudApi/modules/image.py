@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Image(base.Base):
     requestHost = 'image.api.qcloud.com'

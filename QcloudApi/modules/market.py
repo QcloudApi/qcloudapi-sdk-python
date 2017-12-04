@@ -14,5 +14,6 @@
 
 from QcloudApi.modules import base
 
+
 class Market(base.Base):
     requestHost = 'market.api.qcloud.com'
