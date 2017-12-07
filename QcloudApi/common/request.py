@@ -67,7 +67,6 @@ class ApiRequest(object):
                 self.conn.request(req_inter.method, req_inter_url,
                                   None, req_inter.header)
             elif req_inter.method == 'POST':
-                print(req_inter.data)
                 self.conn.request(req_inter.method, req_inter.uri,
                                   req_inter.data, req_inter.header)
             else:
