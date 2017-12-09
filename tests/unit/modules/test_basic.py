@@ -46,6 +46,7 @@ from QcloudApi.modules import scf
 from QcloudApi.modules import sec
 from QcloudApi.modules import snapshot
 from QcloudApi.modules import tdsql
+from QcloudApi.modules import tmt
 from QcloudApi.modules import trade
 from QcloudApi.modules import vod
 from QcloudApi.modules import vpc

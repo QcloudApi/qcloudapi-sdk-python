@@ -5,6 +5,7 @@ CHANGELOG
 latest
 ======
 
+* add tmt module
 * add apigateway, batch, cloudaudit, scf module
 
 2.0.10

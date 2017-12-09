@@ -116,6 +116,9 @@ class QcloudApi(object):
         elif module == 'cloudaudit':
             from .modules.cloudaudit import CloudAudit
             service = CloudAudit(config)
+        elif module == 'tmt':
+            from .modules.tmt import Tmt
+            service = Tmt(config)
         else:
             raise ValueError('module not exists')
 
