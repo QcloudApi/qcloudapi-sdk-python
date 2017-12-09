@@ -6,11 +6,13 @@ distutils/setuptools install script.
 import os
 from setuptools import setup, find_packages
 
+import QcloudApi
+
 ROOT = os.path.dirname(__file__)
 
 setup(
     name='qcloudapi-sdk-python',
-    version='2.0.10',
+    version=QcloudApi.__version__,
     description='The Qcloud Api SDK for Python',
     long_description=open('README.rst').read(),
     author='Qcloud',

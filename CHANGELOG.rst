@@ -2,7 +2,7 @@
 CHANGELOG
 =========
 
-latest
+2.0.11
 ======
 
 * add tmt module
