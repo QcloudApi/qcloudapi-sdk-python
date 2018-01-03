@@ -2,6 +2,11 @@
 CHANGELOG
 =========
 
+latest (now)
+============
+
+* add partners module
+
 2.0.11
 ======
 

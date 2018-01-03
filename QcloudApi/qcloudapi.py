@@ -119,6 +119,9 @@ class QcloudApi(object):
         elif module == 'tmt':
             from .modules.tmt import Tmt
             service = Tmt(config)
+        elif module == 'partners':
+            from .modules.partners import Partners
+            service = Partners(config)
         else:
             raise ValueError('module not exists')
 
