@@ -1,9 +1,18 @@
-language: python
-
-python:
-  - '3.5'
-
 sudo: false
+
+matrix:
+  include:
+    - language: python
+      python: "2.7"
+      env: TOXENV=py27
+
+    - language: python
+      python: "3.5"
+      env: TOXENV=py35
+
+    - language: python
+      python: "3.6"
+      env: TOXENV=py36
 
 install:
   - pip install --upgrade tox
