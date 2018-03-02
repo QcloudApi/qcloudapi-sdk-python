@@ -125,6 +125,9 @@ class QcloudApi(object):
         elif module == 'tbaas':
             from .modules.tbaas import Tbaas
             service = Tbaas(config)
+        elif module == 'athena':
+            from .modules.athena import Athena
+            service = Athena(config)
         else:
             raise ValueError('module not exists')
 

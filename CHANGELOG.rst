@@ -5,6 +5,7 @@ CHANGELOG
 latest (now)
 ============
 
+* add athena module
 * add tbaas module
 * add partners module
 

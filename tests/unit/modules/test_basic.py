@@ -17,6 +17,7 @@
 
 from QcloudApi.modules import apigateway
 from QcloudApi.modules import account
+from QcloudApi.modules import athena
 from QcloudApi.modules import batch
 from QcloudApi.modules import bgpip
 from QcloudApi.modules import bill
