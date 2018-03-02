@@ -48,6 +48,7 @@ from QcloudApi.modules import scaling
 from QcloudApi.modules import scf
 from QcloudApi.modules import sec
 from QcloudApi.modules import snapshot
+from QcloudApi.modules import sts
 from QcloudApi.modules import tbaas
 from QcloudApi.modules import tdsql
 from QcloudApi.modules import tmt

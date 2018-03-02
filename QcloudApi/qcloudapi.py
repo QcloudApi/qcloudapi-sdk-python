@@ -131,6 +131,9 @@ class QcloudApi(object):
         elif module == 'emr':
             from .modules.emr import Emr
             service = Emr(config)
+        elif module == 'sts':
+            from .modules.sts import Sts
+            service = Sts(config)
         else:
             raise ValueError('module not exists')
 
