@@ -26,6 +26,7 @@ try:
 except ImportError:
     from urllib import urlencode
 
+import QcloudApi
 from QcloudApi.common.api_exception import ApiClientParamException
 from QcloudApi.common.api_exception import ApiServerNetworkException
 from QcloudApi.common.request import ApiRequest
@@ -39,7 +40,7 @@ class Base(object):
     requestHost = ''
     requestUri = '/v2/index.php'
     _params = {}
-    version = 'SDK_PYTHON_2.0'
+    version = 'SDK_PYTHON_%s' % QcloudApi.__version__
 
     def __init__(self, config):
         self.secretId = config['secretId']
