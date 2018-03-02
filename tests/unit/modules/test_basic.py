@@ -35,6 +35,7 @@ from QcloudApi.modules import cns
 from QcloudApi.modules import cvm
 from QcloudApi.modules import dfw
 from QcloudApi.modules import eip
+from QcloudApi.modules import emr
 from QcloudApi.modules import feecenter
 from QcloudApi.modules import image
 from QcloudApi.modules import lb
