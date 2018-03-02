@@ -5,6 +5,9 @@ CHANGELOG
 latest (now)
 ============
 
+2.0.12 (2018-03-02)
+===================
+
 * add sts module
 * add emr module
 * add athena module
