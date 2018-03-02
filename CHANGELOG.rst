@@ -5,6 +5,7 @@ CHANGELOG
 latest (now)
 ============
 
+* add tbaas module
 * add partners module
 
 2.0.11

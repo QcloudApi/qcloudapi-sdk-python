@@ -40,11 +40,13 @@ from QcloudApi.modules import lb
 from QcloudApi.modules import live
 from QcloudApi.modules import market
 from QcloudApi.modules import monitor
+from QcloudApi.modules import partners
 from QcloudApi.modules import redis
 from QcloudApi.modules import scaling
 from QcloudApi.modules import scf
 from QcloudApi.modules import sec
 from QcloudApi.modules import snapshot
+from QcloudApi.modules import tbaas
 from QcloudApi.modules import tdsql
 from QcloudApi.modules import tmt
 from QcloudApi.modules import trade

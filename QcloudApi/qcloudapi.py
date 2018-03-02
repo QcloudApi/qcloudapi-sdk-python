@@ -122,6 +122,9 @@ class QcloudApi(object):
         elif module == 'partners':
             from .modules.partners import Partners
             service = Partners(config)
+        elif module == 'tbaas':
+            from .modules.tbaas import Tbaas
+            service = Tbaas(config)
         else:
             raise ValueError('module not exists')
 
