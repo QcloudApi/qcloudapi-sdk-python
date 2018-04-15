@@ -26,6 +26,7 @@ from QcloudApi.modules import bmeip
 from QcloudApi.modules import bmlb
 from QcloudApi.modules import bmvpc
 from QcloudApi.modules import cbs
+from QcloudApi.modules import ccr
 from QcloudApi.modules import ccs
 from QcloudApi.modules import cdb
 from QcloudApi.modules import cdn

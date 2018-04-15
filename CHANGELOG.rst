@@ -5,6 +5,8 @@ CHANGELOG
 latest (now)
 ============
 
+* add ccr module
+
 2.0.12 (2018-03-02)
 ===================
 
