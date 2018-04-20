@@ -5,6 +5,8 @@ CHANGELOG
 latest (now)
 ============
 
+* add dc module
+
 2.0.13 (2018-04-16)
 ===================
 

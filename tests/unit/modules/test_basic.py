@@ -34,6 +34,7 @@ from QcloudApi.modules import cloudaudit
 from QcloudApi.modules import cmem
 from QcloudApi.modules import cns
 from QcloudApi.modules import cvm
+from QcloudApi.modules import dc
 from QcloudApi.modules import dfw
 from QcloudApi.modules import eip
 from QcloudApi.modules import emr
