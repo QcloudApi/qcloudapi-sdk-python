@@ -6,18 +6,18 @@
 
 qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快捷方便的使用腾讯云的API而开发的SDK工具包。
 
-#### 资源
+## 资源
 
 * [公共参数](https://www.qcloud.com/document/api/213/6976)
 * [API列表](https://www.qcloud.com/document/api)
 * [错误码](https://www.qcloud.com/document/api/213/10146)
 
-#### 入门
+## 入门
 
 1. 申请[安全凭证](https://console.qcloud.com/capi)。
 在第一次使用云API之前，用户首先需要在腾讯云网站上申请安全凭证，安全凭证包括 SecretId 和 SecretKey, SecretId 是用于标识 API 调用者的身份，SecretKey是用于加密签名字符串和服务器端验证签名字符串的密钥。SecretKey 必须严格保管，避免泄露。
 
-#### 安装
+## 安装
 
     $ pip install qcloudapi-sdk-python
 
@@ -27,7 +27,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
     $ cd qcloudapi-sdk-python
     $ python setup.py install
 
-#### 使用
+## 使用
 
     >>> from QcloudApi.qcloudapi import QcloudApi
     >>> module = 'cvm'
@@ -37,7 +37,7 @@ qcloudapi-sdk-python是为了让Python开发者能够在自己的代码里更快
     >>> service = QcloudApi(module, config)
     >>> service.call(action, params)
 
-#### 例子
+## 例子
 
     from QcloudApi.qcloudapi import QcloudApi
 

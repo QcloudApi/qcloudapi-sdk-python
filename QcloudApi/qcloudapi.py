@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from QcloudApi.modules import base
+
 
 class QcloudApi(object):
     def __init__(self, module, config):
@@ -141,7 +143,8 @@ class QcloudApi(object):
             from .modules.dc import Dc
             service = Dc(config)
         else:
-            raise ValueError('module not exists')
+            config.setdefault("endpoint", module + '.api.qcloud.com')
+            service = base.Base(config)
 
         return service
 
@@ -191,25 +194,3 @@ class QcloudApi(object):
                 return func(params)
 
         return service.call(action, params)
-
-
-def main():
-    module = 'cdn'
-    action = 'UploadCdnEntity'
-    config = {
-        'Region': 'gz',
-        'secretId': '你的secretId',
-        'secretKey': '你的secretKey',
-        'method': 'post'
-    }
-    params = {
-        'entityFileName': '/test_____don.html',
-        'entityFile': 'c:/xampp/htdocs/index.html'
-    }
-    service = QcloudApi(module, config)
-    print(('URL:\n' + service.generateUrl(action, params)))
-    print((service.call(action, params)))
-
-
-if (__name__ == '__main__'):
-    main()
