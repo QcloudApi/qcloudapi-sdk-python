@@ -5,6 +5,9 @@ CHANGELOG
 latest (now)
 ============
 
+2.0.15 (2018-06-15)
+===================
+
 * dynamic module support: Now user can call any product's API which runs on \*.api.qcloud.com even its module is not listed in SDK.
 
 2.0.14 (2018-04-20)
