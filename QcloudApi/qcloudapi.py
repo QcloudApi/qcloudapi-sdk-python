@@ -158,7 +158,7 @@ class QcloudApi(object):
         self.config['method'] = method
 
     def setRegion(self, region):
-        self.config['region'] = region
+        self.config['Region'] = region
 
     def setSignatureMethod(self, SignatureMethod):
         self.config['SignatureMethod'] = SignatureMethod
