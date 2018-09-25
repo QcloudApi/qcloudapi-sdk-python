@@ -80,11 +80,13 @@ except Exception as e:
 
 部分产品根据自身业务特点，拆分成多个服务，其调用域名根据功能而不同，此种情况下模块名会有多个，请配合官网文档进行使用，本文档不另作说明了。
 
+以下信息更新于2018-09-25
+
 | 产品中文名 | 模块名 | 显式支持 | 支持 API 3.0 | 备注
 |-|-|-|-|-|
 | 云服务器 | cvm、image、dfw、eip | 是 | 是 | |
 | 云硬盘 | cbs、snapshot | 是 | 是 | |
-| 黑石物理服务器 | bm、bmlb、bmeip、bmvpc | 是 | 否 | |
+| 黑石物理服务器 | bm、bmlb、bmeip、bmvpc | 是 | 部分 | |
 | 容器服务 | ccs、ccr | 是 | 否 | |
 | 弹性伸缩 | scaling | 是 | 否 | |
 | 负载均衡 | lb | 是 | 否 | |
@@ -92,20 +94,20 @@ except Exception as e:
 | 私有网络 | vpc | 是 | 是 | |
 | 批量计算 | batch | 是 | 是 | |
 | API网关 | apigateway | 是 | 否 | |
-| 专线接入 | dc | 是 | 否 | |
+| 专线接入 | dc | 是 | 是 | |
 | 动态加速网络 | dsa | 否 | 否 | |
 | 消息队列 CKafka | ckafka | 否 | 否 | |
 | 消息队列 IoT MQ | mqiot | 否 | 否 | |
 | 消息队列 CMQ | cmq-queue-{REGION} | 否 | 否 | 产品域名不固定，和区域有关 |
 | 数据库 MySQL | cdb | 是 | 是 | |
 | 数据库 MariaDB（TDSQL）| tdsql | 是 | 是 | |
-| 数据库 SQL Server | sqlserver | 否 | 否 | |
+| 数据库 SQL Server | sqlserver | 否 | 是 | |
 | 内容分发网络 | cdn | 是 | 否 | |
-| 弹性缓存 Redis | redis | 是 | 否 | |
+| 弹性缓存 Redis | redis | 是 | 部分 | |
 | 弹性缓存 Memcached | cmem | 是 | 否 | |
 | 文档数据库 MongoDB | mongodb | 否 | 否 | |
 | 云监控 | monitor | 是 | 否 | |
-| TBaaS | tbaas | 是 | 否 | |
+| TBaaS | tbaas | 是 | 是 | |
 | 访问管理 | cam、sts | 部分 | 否 | |
 | 大禹网络安全 | bgpip、shield | 部分 | 否 | |
 | 天御业务安全防护 | sec | 是 | 否 | 产品域名为 csec
@@ -115,7 +117,7 @@ except Exception as e:
 | 云搜 | yunsou | 是 | 否 | |
 | 文智自然语言处理 | wenzhi | 是 | 否 | |
 | 点播 | vod | 是 | 否 | |
-| 云市场 | market | 是 | 否 | |
+| 云市场 | market | 是 | 是 | |
 | 直播 | live | 是 | 否 | |
 | 腾讯机器翻译 | tmt | 是 | 是 | |
 | 物联网通信 | iotcloud | 否 | 否 | |
