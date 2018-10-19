@@ -46,10 +46,13 @@ config = {
     'secretKey': '您的secretKey',
     'method': 'GET',
     'SignatureMethod': 'HmacSHA1',
+    # 只有cvm需要填写version，其他产品不需要
     'Version': '2017-03-12'
 }
 
-# 接口参数
+# 接口参数，根据实际情况填写，支持json
+# 例如数组可以 "ArrayExample": ["1","2","3"]
+# 例如字典可以 "DictExample": {"key1": "value1", "key2": "values2"}
 action_params = {
     'Limit':1,
 }
@@ -88,7 +91,7 @@ except Exception as e:
 | 云硬盘 | cbs、snapshot | 是 | 是 | |
 | 黑石物理服务器 | bm、bmlb、bmeip、bmvpc | 是 | 部分 | |
 | 容器服务 | ccs、ccr | 是 | 否 | |
-| 弹性伸缩 | scaling | 是 | 否 | |
+| 弹性伸缩 | scaling | 是 | 是 | |
 | 负载均衡 | lb | 是 | 否 | |
 | 无服务器云函数 | scf | 是 | 部分 | |
 | 私有网络 | vpc | 是 | 是 | |
@@ -118,7 +121,7 @@ except Exception as e:
 | 文智自然语言处理 | wenzhi | 是 | 否 | |
 | 点播 | vod | 是 | 否 | |
 | 云市场 | market | 是 | 是 | |
-| 直播 | live | 是 | 否 | |
+| 直播 | live | 是 | 部分 | |
 | 腾讯机器翻译 | tmt | 是 | 是 | |
 | 物联网通信 | iotcloud | 否 | 否 | |
 | 弹性 Mapreduce | emr | 是 | 否 | |
